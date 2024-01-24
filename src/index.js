@@ -418,57 +418,12 @@ var processEvent = async function (event, context) {
   await postMessage(slackMessage);
 };
 
-
-
-const eventTest = {
-  "Records": [
-    {
-      "EventSource": "aws:sns",
-      "EventVersion": "1.0",
-      "EventSubscriptionArn": "arn:aws:sns:us-west-2:123456789123:CloudWatchNotifications:00000000-0000-0000-0000-000000000000",
-      "Sns": {
-        "Type": "Notification",
-        "MessageId": "00000000-0000-0000-0000-000000000000",
-        "TopicArn": "arn:aws:sns:us-west-2:123456789123:CloudWatchNotifications",
-        "Timestamp": new Date(),
-        "Subject": "ALARM: \"Missing alarm\"",
-        "Message": JSON.stringify(
-          {
-            "AlarmName": "event not passed to the lambda",
-            "AlarmDescription": null,
-            "AWSAccountId": "123456789123",
-            "NewStateValue": "ALARM",
-            "NewStateReason": "Lambda function ran, but no event was set.",
-            "StateChangeTime": new Date(),
-            "Region": "Ether, we don't know",
-            "OldStateValue": "OK",
-            "Trigger": {
-              "MetricName": "Event Sent",
-              "Namespace": "AWS/RDS",
-              "Statistic": "AVERAGE",
-              "Unit": null,
-              "Dimensions": [{
-                "name": "DummyEvent",
-                "value": "app"
-              }],
-              "Period": 300,
-              "EvaluationPeriods": 1,
-              "ComparisonOperator": "GreaterThanOrEqualToThreshold",
-              "Threshold": 10.0
-            }
-          }),
-        "MessageAttributes": {}
-      }
-    }
-  ]
-}
-
-async function handler(event = eventTest,
-  context) {
+async function handler(event, context) {
   if (config.unencryptedHookUrl) {
     await processEvent(event, context);
   } else {
     context.fail('hook url has not been set.');
+    throw new Error('hook url has not been set.')
   }
 }; 
 
