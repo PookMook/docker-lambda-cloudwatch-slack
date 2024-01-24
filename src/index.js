@@ -473,6 +473,3 @@ async function handler(event = eventTest,
 }; 
 
 exports.handler = handler;
-exports.autofire = function(_, context){
-  handler(eventTest,context)
-}
