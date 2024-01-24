@@ -5,19 +5,14 @@
   "authors": [
     "Christopher Reichert <creichert07@gmail.com>",
     "Cody Reichert <codyreichert@gmail.com>",
-    "Alexandr Promakh <s-promakh@ya.ru>"
+    "Alexandr Promakh <s-promakh@ya.ru>",
+    "Arthur Juchereau <arthurj.courriel@gmail.com"
   ],
   "config": {
     "progress": "true"
   },
   "dependencies": {
-    "aws-sdk": "^2.4.0",
-    "https": "^1.0.0",
-    "lodash": "^4.15.0",
-    "url": "^0.11.0"
-  },
-  "devDependencies": {
-    "node-lambda": "0.16.0"
+    "node-fetch": "^2.7.0"
   },
   "keywords": [
     "aws",
@@ -33,6 +28,7 @@
     "url": "https://github.com/assertible/lambda-cloudwatch-slack.git"
   },
   "scripts": {
+    "start": "node index.js",
     "deploy": "./scripts/deploy.sh",
     "test": "./scripts/test.sh"
   }

@@ -1,3 +1,12 @@
+# Docker-cloudwatch-slack
+
+This is a fork of assertible/lambda-cloudwatch-slack to build a public docker image for the cloudwatch to lambda code.
+This is only a convenience thing to be able to set a docker image rather than upload your own code.
+
+Does not support encrypted hook URLs. feel free to PR if you want it (you can find implematation example in the base of the fork)
+
+Use at your own risks.
+
 # lambda-cloudwatch-slack
 
 An [AWS Lambda](http://aws.amazon.com/lambda/) function for better Slack notifications. 
